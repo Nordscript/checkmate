@@ -7,5 +7,9 @@
     <string name="button_search">Search</string>
     <string name="resto1">Fancy Restaurant</string>
     <string name="table_no">Table 1</string>
+    <string name="title_activity_table_overview">TableOverview</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_payment_picks">PaymentPicks</string>
+    <string name="title_activity_payment_method">PaymentMethod</string>
 
 </resources>

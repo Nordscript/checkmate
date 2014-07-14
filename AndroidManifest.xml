@@ -22,6 +22,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TableOverview"
+            android:label="@string/title_activity_table_overview"
+            android:parentActivityName=".SelectRestaurant" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nordscript.checkmate.SelectRestaurant" />
+        </activity>
+        <activity
+            android:name=".PaymentPicks"
+            android:label="@string/title_activity_payment_picks"
+            android:parentActivityName=".TableOverview" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nordscript.checkmate.TableOverview" />
+        </activity>
+        <activity
+            android:name=".PaymentMethod"
+            android:label="@string/title_activity_payment_method"
+            android:parentActivityName=".PaymentPicks" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nordscript.checkmate.PaymentPicks" />
+        </activity>
     </application>
 
 </manifest>

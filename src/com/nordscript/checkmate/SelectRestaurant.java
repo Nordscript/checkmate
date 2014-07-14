@@ -3,6 +3,7 @@ package com.nordscript.checkmate;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,5 +58,9 @@ public class SelectRestaurant extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+    public void toTable(View view) {
+    	Intent midIntent = new Intent(this, TableOverview.class);
+    	startActivity(midIntent);
+    }
 
 }

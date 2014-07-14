@@ -1,6 +1,8 @@
 package com.nordscript.checkmate;
 
+
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,4 +15,5 @@ public class SelectTable extends Fragment {
         View v = inflater.inflate(R.layout.activity_select_table, null);
         return v;
     }
+
 }
