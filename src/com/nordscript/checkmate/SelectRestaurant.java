@@ -3,12 +3,12 @@ package com.nordscript.checkmate;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 public class SelectRestaurant extends Activity {
@@ -18,12 +18,15 @@ public class SelectRestaurant extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_restaurant);
 		
+		
 		Button btnLoad = (Button) findViewById(R.id.select);
 		 
         OnClickListener listener = new OnClickListener() {
  
             @Override
             public void onClick(View v) {
+        		ViewGroup layout = (ViewGroup) findViewById(R.id.selectTable);
+        		layout.removeAllViews();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 SelectTable hello = new SelectTable();
