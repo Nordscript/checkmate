@@ -4,20 +4,27 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cmateDBlue"
         android:gravity="center_horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
         android:text="@string/hello"
-        android:textColor="@color/topicColor"
+        android:textAllCaps="false"
+        android:textColor="@color/cmateWhite"
         android:textSize="20dp" />
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:animateLayoutChanges="false"
+        android:background="@color/cmateBlue"
+        android:clickable="true"
+        android:dividerHeight="2dp" >
+
     </ListView>
 
 </LinearLayout>

@@ -13,9 +13,11 @@
     <string name="title_activity_payment_method">PaymentMethod</string>
     <string name="mate_name">My Mate</string>
     <string name="to_foods">What have you ordered?</string>
-    
     <string name="hello">Your Check</string>
     
-    <color name="topicColor">#53A0FD</color>
+    <color name="cmateBlue">#53A0FD</color>
+    <color name="cmateDBlue">#283258</color>
+    <color name="cmateWhite">#FFFFFF</color>
+    
 
 </resources>

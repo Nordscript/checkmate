@@ -3,12 +3,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
  
-
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/table_no" 
-        android:onClick="toTable"/>
+        android:background="@color/cmateDBlue"
+        android:onClick="toTable"
+        android:text="@string/table_no"
+        android:textColor="@color/cmateWhite"
+        android:textSize="25sp" />
  
 </LinearLayout>
