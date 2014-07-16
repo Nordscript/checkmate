@@ -1,29 +1,22 @@
 package com.nordscript.checkmate;
 
-
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+public class Orders extends Activity {
 
-public class PaymentPicks extends ListActivity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_orders);
+	}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment_picks);
-		
-
-        setTitle("Food selection");
-
-        
-    
-    };
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.select_restaurant, menu);
+		getMenuInflater().inflate(R.menu.orders, menu);
 		return true;
 	}
 
@@ -38,6 +31,4 @@ public class PaymentPicks extends ListActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-
 }

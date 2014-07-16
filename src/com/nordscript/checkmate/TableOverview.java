@@ -34,7 +34,7 @@ public class TableOverview extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	public void foodMethod(View view) {
-		Intent food = new Intent(this, PaymentPicks.class);
+		Intent food = new Intent(this, Orders.class);
 		startActivity(food);
 	}
 	

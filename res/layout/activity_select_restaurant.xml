@@ -22,7 +22,7 @@
         android:layout_gravity="right|top"
         android:layout_row="0"
         android:text="@string/button_search" 
-        android:onClick="sendMessage" />
+        android:onClick="" />
 
     <Button
         android:id="@+id/select"
