@@ -22,14 +22,7 @@
       android:orientation="horizontal">
 
 
-    <EditText
-        android:id="@+id/messageInput"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:lines="1"
-        android:inputType="textShortMessage"
-        android:singleLine="true" />
+
 
     <ImageButton
         android:id="@+id/sendButton"
@@ -41,4 +34,3 @@
 
 
 </RelativeLayout>
-
