@@ -33,14 +33,6 @@
                 android:value="com.nordscript.checkmate.SelectRestaurant" />
         </activity>
         <activity
-            android:name=".PaymentPicks"
-            android:label="@string/title_activity_payment_picks"
-            android:parentActivityName=".TableOverview" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.nordscript.checkmate.TableOverview" />
-        </activity>
-        <activity
             android:name=".PaymentMethod"
             android:label="@string/title_activity_payment_method"
             android:parentActivityName=".PaymentPicks" >
