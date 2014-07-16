@@ -3,14 +3,15 @@
     package="com.nordscript.checkmate"
     android:versionCode="1"
     android:versionName="1.0" >
-
+	<uses-permission
+    	android:name="android.permission.INTERNET" />
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/checkmate_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity

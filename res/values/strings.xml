@@ -11,5 +11,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_payment_picks">PaymentPicks</string>
     <string name="title_activity_payment_method">PaymentMethod</string>
+    <string name="mate_name">My Mate</string>
+    <string name="to_foods">What have you ordered?</string>
 
 </resources>

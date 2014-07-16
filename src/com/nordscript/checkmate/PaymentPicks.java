@@ -1,61 +1,125 @@
 package com.nordscript.checkmate;
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.app.ListActivity;
+import android.content.SharedPreferences;
+import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.view.inputmethod.EditorInfo;
+import android.widget.*;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.ValueEventListener;
 
-public class PaymentPicks extends Activity {
+import java.util.Random;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_payment_picks);
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
+public class PaymentPicks extends ListActivity {
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.payment_picks, menu);
-		return true;
-	}
+    // TODO: change this to your own Firebase URL
+    private static final String FIREBASE_URL = "https://uqtez5y2bki.firebaseio-demo.com";
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    private String username;
+    private Firebase ref;
+    private ValueEventListener connectedListener;
+    private ChatListAdapter chatListAdapter;
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_payment_picks);
 
-		public PlaceholderFragment() {
-		}
+        // Make sure we have a username
+        setupUsername();
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_payment_picks,
-					container, false);
-			return rootView;
-		}
-	}
+        setTitle("Chatting as " + username);
+
+        // Setup our Firebase ref
+        ref = new Firebase(FIREBASE_URL).child("chat");
+
+        // Setup our input methods. Enter key on the keyboard or pushing the send button
+        EditText inputText = (EditText)findViewById(R.id.messageInput);
+        inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_NULL && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    sendMessage();
+                }
+                return true;
+            }
+        });
+
+        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage();
+            }
+        });
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
+        final ListView listView = getListView();
+        // Tell our list adapter that we only want 50 messages at a time
+        chatListAdapter = new ChatListAdapter(ref.limit(50), this, R.layout.chat_message, username);
+        listView.setAdapter(chatListAdapter);
+        chatListAdapter.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                listView.setSelection(chatListAdapter.getCount() - 1);
+            }
+        });
+
+        // Finally, a little indication of connection status
+        connectedListener = ref.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean connected = (Boolean)dataSnapshot.getValue();
+                if (connected) {
+                    Toast.makeText(PaymentPicks.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(PaymentPicks.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled() {
+                // No-op
+            }
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ref.getRoot().child(".info/connected").removeEventListener(connectedListener);
+        chatListAdapter.cleanup();
+    }
+
+    private void setupUsername() {
+        SharedPreferences prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
+        username = prefs.getString("username", null);
+        if (username == null) {
+            Random r = new Random();
+            // Assign a random user name if we don't have one saved.
+            username = "JavaUser" + r.nextInt(100000);
+            prefs.edit().putString("username", username).commit();
+        }
+    }
+
+    private void sendMessage() {
+        EditText inputText = (EditText)findViewById(R.id.messageInput);
+        String input = inputText.getText().toString();
+        if (!input.equals("")) {
+            // Create our 'model', a Chat object
+            Chat chat = new Chat(input, username);
+            // Create a new, auto-generated child of that chat location, and save our chat data there
+            ref.push().setValue(chat);
+            inputText.setText("");
+        }
+    }
 }

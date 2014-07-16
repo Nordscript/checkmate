@@ -1,9 +1,11 @@
 package com.nordscript.checkmate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class TableOverview extends Activity {
 
@@ -31,4 +33,9 @@ public class TableOverview extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	public void foodMethod(View view) {
+		Intent food = new Intent(this, PaymentPicks.class);
+		startActivity(food);
+	}
+	
 }
