@@ -31,7 +31,7 @@ public class SelectRestaurant extends Activity {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 SelectTable hello = new SelectTable();
-                fragmentTransaction.add(R.id.selectTable, hello, "HELLO");
+                fragmentTransaction.add(R.id.selectTable, hello);
                 fragmentTransaction.commit();
            }
         };
