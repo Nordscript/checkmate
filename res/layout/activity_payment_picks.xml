@@ -39,8 +39,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@color/cmateDBlue"
-            android:text="Pay Order"
-            android:textColor="@color/cmateWhite" />
+            android:textColor="@color/cmateWhite"
+            android:text="Pay Order" />
 
     </RelativeLayout>
 
