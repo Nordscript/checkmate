@@ -8,6 +8,18 @@
         android:layout_height="360dp"
         android:background="@color/cmateBlue" >
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="152dp"
+            android:background="@color/cmateDBlue"
+            android:text="Your total is ..."
+            android:textSize="20dp" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -24,7 +36,8 @@
             android:layout_centerVertical="true"
             android:background="@color/cmateDBlue"
             android:textColor="@color/cmateWhite"
-            android:text="Pay Order" />
+            android:text="Pay Order"
+            android:onClick="toOrder" />
 
     </RelativeLayout>
 

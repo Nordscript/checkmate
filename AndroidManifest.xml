@@ -33,21 +33,21 @@
                 android:value="com.nordscript.checkmate.SelectRestaurant" />
         </activity>
         <activity
-            android:name=".PaymentMethod"
-            android:label="@string/title_activity_payment_method"
-            android:parentActivityName=".PaymentPicks"
-            android:theme="@style/Theme.AppCompat" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.nordscript.checkmate.PaymentPicks" />
-        </activity>
-        <activity
-            android:name=".PaymentPicks"
-            android:label="@string/title_activity_payment_picks"
+            android:name=".Orders"
+            android:label="@string/title_activity_orders"
             android:parentActivityName=".TableOverview" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nordscript.checkmate.TableOverview" />
+        </activity>
+        <activity
+            android:name=".PaymentMethod"
+            android:label="@string/title_activity_payment_method"
+            android:parentActivityName=".Orders"
+            android:theme="@style/Theme.AppCompat" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nordscript.checkmate.Orders" />
         </activity>
     </application>
 

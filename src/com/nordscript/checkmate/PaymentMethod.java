@@ -1,9 +1,11 @@
 package com.nordscript.checkmate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class PaymentMethod extends Activity {
 
@@ -30,5 +32,10 @@ public class PaymentMethod extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toOrder(View view) {
+		Intent order = new Intent(this, Orders.class);
+		startActivity(order);
 	}
 }
