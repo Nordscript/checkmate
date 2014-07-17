@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 
 public class PaymentPicks extends ActionBarActivity {
@@ -72,7 +73,8 @@ public class PaymentPicks extends ActionBarActivity {
 
         	  @Override public void onChildMoved(DataSnapshot snapshot, String previousChildName) { }
 
-        	  @Override public void onCancelled() { }
+        	  @Override
+			  public void onCancelled(FirebaseError arg0) { }
         });
 
     }

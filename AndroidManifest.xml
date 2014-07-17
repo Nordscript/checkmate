@@ -42,8 +42,8 @@
                 android:value="com.nordscript.checkmate.PaymentPicks" />
         </activity>
         <activity
-            android:name=".Orders"
-            android:label="@string/title_activity_orders"
+            android:name=".PaymentPicks"
+            android:label="@string/title_activity_payment_picks"
             android:parentActivityName=".TableOverview" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
