@@ -2,15 +2,15 @@
 <resources>
 
     <string name="app_name">CheckMate</string>
-    <string name="hint_name">Resto name...</string>
+    <string name="hint_name">Search Restaurant</string>
     <string name="action_settings">Settings</string>
     <string name="button_search">Search</string>
-    <string name="resto1">Fancy Restaurant</string>
+    <string name="resto1">Baby Blue</string>
     <string name="table_no">Table 1</string>
-    <string name="title_activity_table_overview">TableOverview</string>
+    <string name="title_activity_table_overview">Who\'s At Your Table</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_payment_picks">PaymentPicks</string>
-    <string name="title_activity_payment_method">PaymentMethod</string>
+    <string name="title_activity_payment_picks">Your Order</string>
+    <string name="title_activity_payment_method">Pick A Payment</string>
     <string name="mate_name">My Mate</string>
     <string name="to_foods">What have you ordered?</string>
     <string name="hello">Your Check</string>
