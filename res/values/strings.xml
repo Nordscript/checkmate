@@ -11,6 +11,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_payment_picks">Your Order</string>
     <string name="title_activity_payment_method">Pick A Payment</string>
+
     <string name="mate_name">My Mate</string>
     <string name="to_foods">What have you ordered?</string>
     <string name="hello">Your Check</string>
@@ -19,5 +20,7 @@
     <color name="cmateDBlue">#283258</color>
     <color name="cmateWhite">#FFFFFF</color>
     
+
+    <string name="title_activity_orders">Orders</string>
 
 </resources>
