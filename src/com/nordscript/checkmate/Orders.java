@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,9 +24,10 @@ import com.firebase.client.FirebaseError;
 
 
 public class Orders extends ActionBarActivity {
+	public final static String TOTAL_SUM = "com.nordscript.checkmate.SUM";
 
 	// Declare the UI components
-		private ListView songsListView;
+		private ListView foodList;
 
 		// Declare an ArrayAdapter that we use to join the data set and the ListView
 		// is the way of type safe, means you only can pass Strings to this array
@@ -33,6 +37,7 @@ public class Orders extends ActionBarActivity {
 		private Firebase ref;
 		private Orders activ;
 		private ArrayList<String> dishes;
+		public int total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class Orders extends ActionBarActivity {
         setContentView(R.layout.activity_orders);
         
      // Initialize the UI components
-        songsListView = (ListView)findViewById(R.id.listView1);
+        foodList = (ListView)findViewById(R.id.listView1);
 
         // Create a reference to a Firebase location
         ref = new Firebase("https://uqtez5y2bki.firebaseio-demo.com/Restaurants/Restaurant 2/Tables/Table 2/Orders");
@@ -58,7 +63,7 @@ public class Orders extends ActionBarActivity {
         	    arrayAdapter = new ArrayAdapter(activ, android.R.layout.simple_list_item_1, dishes.toArray());
 
                 // By using setAdapter method, you plugged the ListView with adapter
-                songsListView.setAdapter(arrayAdapter);
+                foodList.setAdapter(arrayAdapter);
         	  }
 
         	  @Override public void onChildChanged(DataSnapshot snapshot, String previousChildName) { }
@@ -70,7 +75,7 @@ public class Orders extends ActionBarActivity {
           	    arrayAdapter = new ArrayAdapter(activ, android.R.layout.simple_list_item_1, dishes.toArray());
 
                 // By using setAdapter method, you plugged the ListView with adapter
-                songsListView.setAdapter(arrayAdapter);
+                foodList.setAdapter(arrayAdapter);
         	  }
 
         	  @Override public void onChildMoved(DataSnapshot snapshot, String previousChildName) { }
@@ -79,6 +84,17 @@ public class Orders extends ActionBarActivity {
 			  public void onCancelled(FirebaseError arg0) { }
         });
 
+        foodList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            	
+                view.setBackgroundColor(Color.GREEN);
+                String text = dishes.get(position);
+                String str = text.substring(text.indexOf(" "));
+                int num = Integer.parseInt(str.trim());
+                total += num;
+            }
+        });
     }
 
 
@@ -102,7 +118,11 @@ public class Orders extends ActionBarActivity {
     }
     
     public void toPayment(View view) {
+    	String string = Integer.toString(total);
 		Intent pay = new Intent(this, PaymentMethod.class);
+		pay.putExtra(TOTAL_SUM, string);
 		startActivity(pay);
 	}
+    
+
 }
